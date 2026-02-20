@@ -1,1 +1,1 @@
-# ACCD-CT4-J.R.
+# ACCD-CT4-JR
