@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volumetric Fog Doc</title>
+</head>
+
+<body>
+    <h1>Volumetric Fog Doc</h1>
+
+    <h2>Brief</h2>
+    <p>This is a technical study focusing on Volumetric Fog in stylized UE5 environments, deconstructed from an existing project. The objective is to implement a controllable fog system with adjustable parameters. My goal is to integrate a UI for attribute manipulation; however, the minimum viable product (MVP) will focus on the fundamental creation of the volumetric effect.</p>
+    <img src="media/diagram.png" alt="diagram">
+
+    <h2>Fog based on mesh vertex</h2>
+    <p>My first attempt used plane-based clouds by animating vertices with noise.</p>
+    <video src="media/vertexcloud.mp4" controls></video>
+    <img src="media/vertexblueprint.png" alt="vertexblueprint">
+    <p>But since it lacks real volume, the illusion breaks as soon as the camera goes below the horizon—revealing a thin, flat plane instead of dense fog.</p>
+    <img src="media/vertexfogfake.png" alt="fakeplane">
+    <a href="https://www.youtube.com/watch?v=wDNHKsIwarA">Vertex Fog</a>
+
+
+    <h2>Volumetric Fog</h2>
+    <h3>Volume & Animation</h3>
+    <p>I then tried using 3D noise to generate the volume, which worked well for movement and occlusion.</p>
+    <p>The issue was that the cloud shapes didn't change as they traveled. By layering two sets of 3D noise with different scales and velocities, I was able to simulate the dynamic, ever-changing nature of real clouds in motion.</p>
+    <video src="media/volumetricfog.mp4" controls></video>
+    <img src="media/volumetricfogBP.png" alt="volumetricfogBP">
+    <a href="https://www.youtube.com/watch?v=ehufU37e454">Volumetric Fog</a>
+
+    <h3>Shadow</h3>
+    <p>I discovered a technique for ground-trailing fog with realistic shadowing. Unfortunately, because the original project was built in UE4 with custom plugins, many of the Blueprint nodes didn't translate directly to UE5. As a result, the shadow implementation remains a challenge for this iteration.</p>
+
+    <a href="https://asher.gg/create-fast-and-usable-volumetric-cloud-fog/">Create nice and feasible volumetric cloud in Unreal Engine 4</a>
+
+
+
+</body>
+</html>
